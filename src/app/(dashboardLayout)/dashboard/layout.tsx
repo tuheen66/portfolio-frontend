@@ -12,7 +12,7 @@ const DashboardLayout = ({
         <div className="lg:w-1/6" >
           <Sidebar />
         </div>
-        <div className=" lg:w-5/6 ">{children}</div>
+        <div className=" lg:w-5/6  mx-12">{children}</div>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import { TProject } from "@/utils/utils";
 import ProjectCard from "./ProjectCard";
 
 const Projects = async () => {
-  const res = await fetch(`${process.env.BACKEND_URL}/projects`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/projects`);
   const projects = await res.json();
   console.log(projects);
 
