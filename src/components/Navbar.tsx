@@ -87,7 +87,7 @@ const Navbar = ({ session }: { session: TUser | null }) => {
           {session?.user ? (
             <button
               onClick={() => signOut()}
-              className="border border-red-500 text-red-500 px-5 py-2 rounded-full hover:bg-red-500 hover:text-black transition duration-200"
+              className="border border-[#e67e22] text-[#e67e22] px-4 py-1 rounded-lg l hover:bg-[#e67e22] hover:text-white transition duration-200"
             >
               Logout
             </button>

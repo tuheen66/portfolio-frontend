@@ -1,10 +1,15 @@
 import Navbar from "@/components/Navbar";
+import { authOptions } from "@/utils/authOptions";
+import { getServerSession } from "next-auth";
+import React from "react";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-const layout = ({ children }: any) => {
+const layout =async ({ children }: Readonly<{ children: React.ReactNode }>) => {
+
+  const session = await getServerSession(authOptions)
+
   return (
     <div>
-      <Navbar session={null} />
+      <Navbar session={session} />
       {children}
     </div>
   );

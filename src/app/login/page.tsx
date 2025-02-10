@@ -65,7 +65,7 @@ const LoginPage = () => {
             <button
               onClick={() =>
                 signIn("google", {
-                  callbackUrl: "http://localhost:3000",
+                  callbackUrl: "http://localhost:3000/dashboard",
                 })
               }
               className=" text-2xl font-bold mx-2 cursor-pointer hover:underline"
@@ -76,7 +76,7 @@ const LoginPage = () => {
             <button
               onClick={() =>
                 signIn("github", {
-                  callbackUrl: "http://localhost:3000",
+                  callbackUrl: "http://localhost:3000/dashboard",
                 })
               }
               className="text-2xl font-bold mx-2 cursor-pointer hover:underline"
