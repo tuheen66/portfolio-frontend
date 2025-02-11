@@ -9,10 +9,10 @@ const DashboardLayout = ({
   return (
     <div>
       <div className="flex lg:flex-row ">
-        <div className="lg:w-1/6" >
+        <div className="lg:w-3/12">
           <Sidebar />
         </div>
-        <div className=" lg:w-5/6  mx-12">{children}</div>
+        <div className=" lg:w-9/12  mx-12">{children}</div>
       </div>
     </div>
   );

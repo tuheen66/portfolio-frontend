@@ -1,14 +1,20 @@
+"use client";
 import Link from "next/link";
-
+import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
+  const pathName = usePathname();
   return (
-    <div className="bg-gray-200 min-h-screen p-4 ">
-      <ul className="space-y-4">
+    <div className="bg-gray-200 h-full py-4 px-8  text-slate-800">
+      <ul className="space-y-4 mx-auto">
         <li>
           <Link
             href="/dashboard"
-            className="flex items-center space-x-2 p-3 rounded-md hover:bg-gray-200 text-gray-700"
+            className={
+              pathName === "/dashboard"
+                ? "bg-slate-300 w-full px-4 py-1 rounded-lg"
+                : "hover:text-gray-800 hover:underline"
+            }
           >
             Dashboard
           </Link>
@@ -17,7 +23,11 @@ const Sidebar = () => {
         <li>
           <Link
             href="/dashboard/blogs"
-            className="flex items-center space-x-2 p-3 rounded-md hover:bg-gray-200 text-gray-700"
+            className={
+              pathName === "/dashboard/blogs"
+                ? "bg-slate-300 w-full px-4 py-1 rounded-lg"
+                : "hover:text-gray-800 hover:underline"
+            }
           >
             Blogs Management
           </Link>
@@ -26,7 +36,11 @@ const Sidebar = () => {
         <li>
           <Link
             href="/dashboard/projects"
-            className="flex items-center space-x-2 p-3 rounded-md hover:bg-gray-200 text-gray-700"
+            className={
+              pathName === "/dashboard/projects"
+                ? "bg-slate-300 w-full px-4 py-1 rounded-lg"
+                : "hover:text-gray-800 hover:underline"
+            }
           >
             Project Management
           </Link>
@@ -35,16 +49,20 @@ const Sidebar = () => {
         <li>
           <Link
             href="/dashboard/message"
-            className="flex items-center space-x-2 p-3 rounded-md hover:bg-gray-200 text-gray-700"
+            className={
+              pathName === "/dashboard/message"
+                ? "bg-slate-300 w-full px-4 py-1 rounded-lg"
+                : "hover:text-gray-800 hover:underline"
+            }
           >
             Message Management
           </Link>
         </li>
-        <hr className="border-b-4-2  border-slate-900" />
+        <hr className="border-b-2  border-[#e67e22]" />
         <li>
           <Link
             href="/"
-            className="flex items-center space-x-2 p-3 rounded-md hover:bg-gray-200 text-gray-700"
+            className="flex items-center space-x-2 py-2 rounded-md hover:bg-gray-200 text-gray-700"
           >
             Home
           </Link>

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-const DeleteButton = ({ id }: { id: string }) => {
+const DeleteMessageButton = ({ id }: { id: string }) => {
   const router = useRouter();
 
   const handleDelete = async () => {
@@ -14,7 +14,7 @@ const DeleteButton = ({ id }: { id: string }) => {
     router.refresh();
   };
 
-  return <button onClick={handleDelete}>Delete</button>;
+  return <button className="btn btn-sm join-item bg-red-700" onClick={handleDelete}>Delete</button>;
 };
 
-export default DeleteButton;
+export default DeleteMessageButton ;

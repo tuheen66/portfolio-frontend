@@ -1,14 +1,13 @@
 import { IFormInput } from "@/app/(mainLayout)/contact/page";
-import DeleteButton from "@/components/DeleteButton";
+import DeleteMessageButton from "@/components/DeleteMessageButton";
 
 const MessageManagement = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/message`);
   const messages = await res.json();
 
-  console.log(await messages);
-
   return (
-    <div>
+    <div className="min-h-screen my-12">
+      <h1 className="text-3xl text-center my-12">All Messages</h1>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
@@ -29,12 +28,10 @@ const MessageManagement = async () => {
                 <td>{message.email}</td>
                 <td>{message.message}</td>
                 <td>
-                  <DeleteButton id={message._id} />
+                  <DeleteMessageButton id={message._id} />
                 </td>
               </tr>
             ))}
-
-            {/* row 2 */}
           </tbody>
         </table>
       </div>
