@@ -7,11 +7,11 @@ const MessageManagement = async () => {
 
   return (
     <div className="min-h-screen my-12">
-      <h1 className="text-3xl text-center my-12">All Messages</h1>
+      <h1 className="text-center text-3xl mb-8 text-slate-700 dark:text-white">All Messages</h1>
       <div className="overflow-x-auto">
-        <table className="table">
+        <table className="table text-slate-900  dark:text-white bg-slate-400 dark:bg-slate-700">
           {/* head */}
-          <thead>
+          <thead className="text-slate-700  dark:text-white text-md  ">
             <tr>
               <th>#</th>
               <th>Name</th>
@@ -20,9 +20,9 @@ const MessageManagement = async () => {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="bg-slate-400 text-slate-900">
             {messages?.map((message: IFormInput, index: number) => (
-              <tr key={index} className="bg-base-200">
+              <tr className="bg-slate-400 text-slate-900 dark:bg-slate-700 dark:text-white " key={index} >
                 <th>{index + 1}</th>
                 <td>{message.name}</td>
                 <td>{message.email}</td>

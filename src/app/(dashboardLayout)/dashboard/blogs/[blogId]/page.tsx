@@ -79,14 +79,14 @@ const UpdateBlog = () => {
 
   return (
     <div>
-      <div className="w-[50%] mx-auto mt-12 bg-slate-300 text-slate-900 p-8 rounded-lg">
+      <div className="lg:w-[50%] mx-auto my-12 bg-slate-400 dark:bg-slate-900 text-black dark:text-white p-8 rounded-lg border border-gray-200  shadow-2xl shadow-slate-600">
         <form onSubmit={handleSubmit(onSubmit)}>
           <h1 className="mb-4 text-center text-2xl">Update Blog</h1>
           <div className="flex flex-col mb-2">
             <label>Blog Tittle</label>
             <input
               //   defaultValue={blog?.title}
-              className="p-1 rounded-lg text-white px-2 py-1"
+              className="p-1 rounded-lg text-gray-900  px-2 py-1 bg-gray-50"
               {...register("title")}
             />
           </div>
@@ -94,7 +94,7 @@ const UpdateBlog = () => {
             <label>Author</label>
             <input
               //   defaultValue={blog?.author}
-              className="p-1 rounded-lg text-white px-2 py-1"
+              className="p-1 rounded-lg text-gray-900  px-2 py-1 bg-gray-50"
               {...register("author")}
             />
           </div>
@@ -102,7 +102,7 @@ const UpdateBlog = () => {
             <label>Image</label>
             <input
               //   defaultValue={blog?.image}
-              className="p-1 rounded-lg text-white px-2 py-1"
+              className="p-1 rounded-lg text-gray-900  px-2 py-1 bg-gray-50"
               {...register("image")}
             />
           </div>
@@ -110,14 +110,14 @@ const UpdateBlog = () => {
             <label>Category</label>
             <input
               //   defaultValue={blog?.category}
-              className="p-1 rounded-lg text-white px-2 py-1"
+              className="p-1 rounded-lg text-gray-900  px-2 py-1 bg-gray-50"
               {...register("category")}
             />
           </div>
           <div className="flex flex-col mb-2">
             <label>Blog Content</label>
             <textarea
-              className="p-1 rounded-lg text-white px-2 py-1"
+              className="p-1 rounded-lg text-gray-900  px-2 py-1 bg-gray-50"
               {...register("blog")}
             />
           </div>

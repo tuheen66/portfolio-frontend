@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Kanit } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "next-themes";
 
 const kanit = Kanit({
   variable: "--font-merriweather",
@@ -19,8 +20,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={kanit.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${kanit.className} bg-gray-300 dark:bg-slate-900`}>
+        
+      <ThemeProvider attribute="class" defaultTheme="light">
+          {children}
+        </ThemeProvider>
+        
+        </body>
     </html>
   );
 }

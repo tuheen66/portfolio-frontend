@@ -1,19 +1,20 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggle";
 
 const Sidebar = () => {
   const pathName = usePathname();
   return (
-    <div className="bg-gray-200 h-full py-4 px-8  text-slate-800">
+    <div className="bg-slate-900 dark:bg-gray-300 h-full py-4 px-8 dark:text-slate-900  text-white">
       <ul className="space-y-4 mx-auto">
         <li>
           <Link
             href="/dashboard"
             className={
               pathName === "/dashboard"
-                ? "bg-slate-300 w-full px-4 py-1 rounded-lg"
-                : "hover:text-gray-800 hover:underline"
+                ? "bg-slate-400 dark:bg-slate-500 w-full px-4 py-1 text-slate-900 dark:text-white rounded-lg"
+                : "dark:hover:text-gray-800 hover:text-gray-400 hover:underline"
             }
           >
             Dashboard
@@ -25,8 +26,8 @@ const Sidebar = () => {
             href="/dashboard/blogs"
             className={
               pathName === "/dashboard/blogs"
-                ? "bg-slate-300 w-full px-4 py-1 rounded-lg"
-                : "hover:text-gray-800 hover:underline"
+                ? "bg-slate-400 dark:bg-slate-500 w-full px-4 py-1 text-slate-900 dark:text-white rounded-lg"
+                : "dark:hover:text-gray-800 hover:text-gray-400 hover:underline"
             }
           >
             Blogs Management
@@ -38,8 +39,8 @@ const Sidebar = () => {
             href="/dashboard/projects"
             className={
               pathName === "/dashboard/projects"
-                ? "bg-slate-300 w-full px-4 py-1 rounded-lg"
-                : "hover:text-gray-800 hover:underline"
+                ? "bg-slate-400 dark:bg-slate-500 w-full px-4 py-1 text-slate-900 dark:text-white rounded-lg"
+                : "dark:hover:text-gray-800 hover:text-gray-400 hover:underline"
             }
           >
             Project Management
@@ -51,8 +52,8 @@ const Sidebar = () => {
             href="/dashboard/message"
             className={
               pathName === "/dashboard/message"
-                ? "bg-slate-300 w-full px-4 py-1 rounded-lg"
-                : "hover:text-gray-800 hover:underline"
+                ? "bg-slate-400 dark:bg-slate-500 w-full px-4 py-1 text-slate-900 dark:text-white rounded-lg"
+                : "dark:hover:text-gray-800 hover:text-gray-400 hover:underline"
             }
           >
             Message Management
@@ -62,11 +63,13 @@ const Sidebar = () => {
         <li>
           <Link
             href="/"
-            className="flex items-center space-x-2 py-2 rounded-md hover:bg-gray-200 text-gray-700"
+            className="flex items-center space-x-2 py-2 rounded-md dark:text-slate-900  text-white"
           >
             Home
           </Link>
         </li>
+
+        <ThemeToggle/>
       </ul>
     </div>
   );

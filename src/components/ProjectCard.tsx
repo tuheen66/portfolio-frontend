@@ -6,8 +6,8 @@ import { FaArrowRight } from "react-icons/fa";
 
 const ProjectCard = ({ project }: { project: TProject }) => {
   return (
-    <div className="border-2 border-gray-300 shadow-xl shadow-slate-400 p-4 rounded-xl h-fit">
-      <h2 className="mb-4 text-center text-2xl ">{project.title}</h2>
+    <div className="border-2 border-gray-300 bg-slate-400 dark:bg-slate-900  shadow-xl shadow-slate-600 p-4 rounded-xl mb-12">
+      <h2 className="mb-4 text-center text-2xl text-slate-700 dark:text-white  ">{project.title}</h2>
       <div className="">
         <Image
           className="rounded-xl  "

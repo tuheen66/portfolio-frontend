@@ -37,7 +37,9 @@ const ProjectManagement = () => {
   }, []);
 
   const handleDeleteSuccess = (deletedId: string) => {
-    setProjects((prevProjects) => prevProjects.filter((project) => project._id !== deletedId));
+    setProjects((prevProjects) =>
+      prevProjects.filter((project) => project._id !== deletedId)
+    );
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -113,13 +115,13 @@ const ProjectManagement = () => {
   return (
     <div className="min-h-screen">
       <div className="my-12">
-        <h1 className="text-center text-3xl mb-8">All Blogs</h1>
+        <h1 className="text-slate-700 dark:text-white">All Blogs</h1>
 
         <div>
           <div className="overflow-x-auto">
-            <table className="table">
+            <table className="table text-slate-900  dark:text-white">
               {/* head */}
-              <thead>
+              <thead className="text-slate-700  dark:text-white">
                 <tr>
                   <th>SL #</th>
                   <th>Image</th>
@@ -161,17 +163,15 @@ const ProjectManagement = () => {
                     <td>
                       <div className="join join-vertical">
                         <Link href={`/dashboard/projects/${project._id}`}>
-                          <button className="btn btn-sm join-item bg-green-700">
+                          <button className="btn btn-sm join-item bg-green-700 border-none text-white">
                             Update
                           </button>
                         </Link>
                         <DeleteProjectButton
                           id={project._id}
-                           onDeleteSuccess={handleDeleteSuccess}
+                          onDeleteSuccess={handleDeleteSuccess}
                         />
-                        {/* <button className="btn btn-sm join-item bg-red-700">
-                          Delete
-                        </button> */}
+                        
                       </div>
                     </td>
                   </tr>
@@ -183,7 +183,7 @@ const ProjectManagement = () => {
       </div>
 
       <div>
-        <div className="w-full max-w-xl mx-auto my-12 p-4 bg-slate-300 border border-gray-200  shadow-2xl shadow-slate-600 sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 rounded-xl ">
+        <div className="w-full max-w-xl mx-auto my-12 p-4 border border-gray-200  shadow-2xl shadow-slate-600 sm:p-6 md:p-8 bg-slate-400 dark:bg-slate-900 text-black dark:text-white rounded-xl ">
           <h5 className="text-2xl font-bold text-gray-700 dark:text-white text-center">
             Create Project
           </h5>

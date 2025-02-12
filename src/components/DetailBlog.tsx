@@ -11,7 +11,7 @@ export type TBlog = {
 
 const DetailBlog = ({ blog }: { blog: TBlog }) => {
   return (
-    <div className="my-12 pb-12">
+    <div className="my-12 pb-12 text-slate-900 dark:text-slate-400 ">
       <h1 className="text-center text-3xl mb-4"> {blog.title}</h1>
       <div>
         <Image
@@ -22,7 +22,7 @@ const DetailBlog = ({ blog }: { blog: TBlog }) => {
           height={300}
         />
       </div>
-      <div className="w-[600px] mx-auto my-4 space-y-4">
+      <div className="w-full lg:w-[600px] mx-auto my-4 space-y-4">
         <h2 className="text-xl ">Author : {blog.author}</h2>
         <h2 className="text-lg ">Category : {blog.category}</h2>
         <p>{blog.blog}</p>

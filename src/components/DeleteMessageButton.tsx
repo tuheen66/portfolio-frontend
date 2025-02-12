@@ -14,7 +14,7 @@ const DeleteMessageButton = ({ id }: { id: string }) => {
     router.refresh();
   };
 
-  return <button className="btn btn-sm join-item bg-red-700" onClick={handleDelete}>Delete</button>;
+  return <button className="btn btn-sm join-item text-white border-none bg-red-700" onClick={handleDelete}>Delete</button>;
 };
 
 export default DeleteMessageButton ;

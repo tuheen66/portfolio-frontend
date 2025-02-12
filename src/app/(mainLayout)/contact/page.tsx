@@ -33,10 +33,13 @@ const ContactPage = () => {
 
   return (
     <section className="  rounded-xl  mx-auto min-h-screen">
-      <div className=" flex justify-center items-center h-[500px] w-[40%] mx-auto">
+      <h1 className="text-3xl text-center mt-12 text-slate-700 dark:text-white">
+        Contact Me
+      </h1>
+      <div className=" flex justify-center items-center h-[500px] md:w-[80%] lg:w-[40%] mx-2 md:mx-auto">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="container  bg-gray-300 text-black p-6 rounded-lg"
+          className="container  bg-slate-400 dark:bg-slate-700 text-black dark:text-white p-6 rounded-lg"
         >
           <div className="space-y-2">
             <div className="col-span-full sm:col-span-3 space-y-2">

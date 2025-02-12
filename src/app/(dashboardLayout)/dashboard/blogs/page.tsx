@@ -57,13 +57,15 @@ const BlogsManagement = () => {
   return (
     <div>
       <div className="my-12">
-        <h1 className="text-center text-3xl mb-8">All Blogs</h1>
+        <h1 className="text-center text-3xl mb-8 text-slate-700 dark:text-white">
+          All Blogs
+        </h1>
 
         <div>
           <div className="overflow-x-auto">
-            <table className="table">
+            <table className="table text-slate-900  dark:text-white">
               {/* head */}
-              <thead>
+              <thead className="text-slate-700  dark:text-white">
                 <tr>
                   <th>SL #</th>
                   <th>Image</th>
@@ -105,7 +107,7 @@ const BlogsManagement = () => {
                     <td>
                       <div className="join join-vertical">
                         <Link href={`/dashboard/blogs/${blog._id}`}>
-                          <button className="btn btn-sm join-item bg-green-700">
+                          <button className="btn btn-sm join-item border-none text-white bg-green-700">
                             Update
                           </button>
                         </Link>
@@ -124,41 +126,41 @@ const BlogsManagement = () => {
         </div>
       </div>
 
-      <div className="w-[50%] mx-auto my-12 bg-slate-300 text-slate-900 p-8 rounded-lg">
+      <div className="lg:w-[50%] mx-auto my-12 bg-slate-400 dark:bg-slate-900 text-black dark:text-white p-8 rounded-lg border border-gray-200  shadow-2xl shadow-slate-600">
         <form onSubmit={handleSubmit(onSubmit)}>
           <h1 className="mb-4 text-center text-2xl">Create Blog</h1>
-          <div className="flex flex-col mb-2">
+          <div className="flex flex-col mb-2 ">
             <label>Blog Tittle</label>
             <input
-              className="p-1 rounded-lg text-white px-2 py-1"
+              className="p-1 rounded-lg text-gray-900  px-2 py-1 bg-gray-50"
               {...register("title")}
             />
           </div>
           <div className="flex flex-col mb-2">
             <label>Author</label>
             <input
-              className="p-1 rounded-lg text-white px-2 py-1"
+              className="p-1 rounded-lg text-gray-900  px-2 py-1 bg-gray-50"
               {...register("author")}
             />
           </div>
           <div className="flex flex-col mb-2">
             <label>Image</label>
             <input
-              className="p-1 rounded-lg text-white px-2 py-1"
+              className="p-1 rounded-lg text-gray-900  px-2 py-1 bg-gray-50"
               {...register("image")}
             />
           </div>
           <div className="flex flex-col mb-2">
             <label>Category</label>
             <input
-              className="p-1 rounded-lg text-white px-2 py-1"
+              className="p-1 rounded-lg text-gray-900  px-2 py-1 bg-gray-50"
               {...register("category")}
             />
           </div>
           <div className="flex flex-col mb-2">
             <label>Blog Content</label>
             <textarea
-              className="p-1 rounded-lg text-white px-2 py-1"
+              className="p-1 rounded-lg text-white px-2 py-1 bg-gray-50"
               {...register("blog")}
             />
           </div>

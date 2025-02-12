@@ -20,7 +20,7 @@ const DeleteProjectButton = ({
       };
     
       return (
-        <button className="btn btn-sm join-item bg-red-700" onClick={handleDelete}>
+        <button className="btn btn-sm join-item bg-red-700 border-none text-white" onClick={handleDelete}>
           Delete
         </button>
       );

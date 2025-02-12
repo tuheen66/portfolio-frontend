@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
 import logo from "../assets/images/logo.png";
 import Image from "next/image";
+import ThemeToggle from "./ThemeToggle";
 
 export type TUser = {
   user?: {
@@ -17,8 +18,8 @@ const Navbar = ({ session }: { session: TUser | null }) => {
   const pathName = usePathname();
 
   return (
-    <nav className="bg-gray-600 text-white py-2 shadow-md w-[90%] mx-auto px-4 rounded-lg">
-      <div className="container mx-auto flex justify-between items-center">
+    <div className="bg-gray-600 text-white py-2 shadow-md w-[90%] mx-auto px-4 rounded-lg">
+      <div className="container mx-auto flex flex-col lg:flex-row gap-4 justify-between items-center">
         <div>
           <Link href="/" className="flex gap-2 items-center text-2xl font-bold">
             <Image src={logo} width={50} height={50} alt="logo" />
@@ -28,12 +29,12 @@ const Navbar = ({ session }: { session: TUser | null }) => {
           </Link>
         </div>
 
-        <div className="space-x-6">
+        <div className="space-x-6 flex  lg:flex-row flex-wrap justify-center items-center  gap-2">
           <Link
             href="/"
             className={
               pathName === "/"
-                ? "border border-[#e67e22] text-[#e67e22] px-4 py-1 rounded-lg"
+                ? "border border-[#e67e22] text-[#e67e22]  px-4 py-1 rounded-lg"
                 : "hover:text-gray-200 hover:underline"
             }
           >
@@ -83,6 +84,9 @@ const Navbar = ({ session }: { session: TUser | null }) => {
             Dashboard
           </Link>
         </div>
+        <div>
+          <ThemeToggle/>
+        </div>
         <div className="flex items-center">
           {session?.user ? (
             <button
@@ -101,7 +105,7 @@ const Navbar = ({ session }: { session: TUser | null }) => {
           )}
         </div>
       </div>
-    </nav>
+    </div>
   );
 };
 

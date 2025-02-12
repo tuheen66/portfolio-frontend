@@ -7,7 +7,7 @@ const DashboardPage = async () => {
   console.log(session);
   return (
     <div className="">
-      <div className="flex flex-col justify-center items-center space-y-4 min-h-screen mx-auto ">
+      <div className="flex flex-col text-slate-900 dark:text-white justify-center items-center space-y-4 min-h-screen mx-auto ">
         <h1 className="text-4xl">Welcome {session?.user?.name}</h1>
         {session?.user?.email && <p className="text-xl">Email : {session?.user?.email}</p>}
         <div>

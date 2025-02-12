@@ -1,9 +1,10 @@
 import Image from "next/image";
 import monir from "../assets/images/Monirul.jpg";
+import Link from "next/link";
 
 const Intro = () => {
   return (
-    <section className="flex flex-col md:flex-row items-center justify-center gap-6 p-6 bg-gray-100 dark:bg-gray-900 rounded-2xl shadow-lg">
+    <section className="flex flex-col lg:flex-row items-center justify-center gap-6 p-6 bg-gray-100 dark:bg-gray-700 rounded-2xl shadow-lg">
       {/* Profile Picture */}
       <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-blue-500 shadow-lg">
         <Image
@@ -14,7 +15,7 @@ const Intro = () => {
       </div>
 
       {/* Text Section */}
-      <div className="text-center md:text-left max-w-xl">
+      <div className=" max-w-xl">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
           Monirul Hassan
         </h1>
@@ -37,6 +38,11 @@ const Intro = () => {
           open-source projects, and continuously improving my skills**. Lets
           connect and build something amazing together!
         </p>
+        <Link href="https://drive.google.com/file/d/1GgdsvvmJ1ZMSUPqjwk_HNX0FtByp1q-N/view?usp=drive_link" target="_blank">
+        <button className="text-white mt-2 bg-[#e67e22]  px-4 py-2  flex items-center gap-4 rounded-lg">
+          Download Resume
+        </button>
+        </Link>
       </div>
     </section>
   );
