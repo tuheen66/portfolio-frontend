@@ -1,44 +1,29 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import DeleteProjectButton from "@/components/DeleteProjectButton";
-import { createProject } from "@/utils/actions/createProject";
-import { fetchProjects } from "@/utils/actions/fetchProjects";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import {
+  fetchProject,
+  IProjectInfo,
+  updateProject,
+} from "@/utils/actions/updateProject";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
-interface IFormInput {
-  _id: string;
-  name: string;
-  email: string;
-  message: string;
-  title?: string;
-  sub_title?: string;
-  author?: string;
-  image: string;
-  category: string;
-  blog: string;
-}
-
-const ProjectManagement = () => {
-  const [projects, setProjects] = useState<IFormInput[]>([]);
-
+const UpdateProject = () => {
+  const { projectId } = useParams();
+  const [project, setProject] = useState<IProjectInfo | null>(null);
   const router = useRouter();
 
   useEffect(() => {
-    async function loadProject() {
-      const data = await fetchProjects();
-      setProjects(data);
+    async function getProject() {
+      const projectData = await fetchProject(projectId as string);
+      setProject(projectData);
     }
-    loadProject();
-  }, []);
+    getProject();
+  }, [projectId]);
 
-  const handleDeleteSuccess = (deletedId: string) => {
-    setProjects((prevProjects) => prevProjects.filter((project) => project._id !== deletedId));
-  };
+  console.log(project);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -100,9 +85,9 @@ const ProjectManagement = () => {
     };
 
     try {
-      const res = await createProject(projectInfo);
-      if (res.insertedId) {
-        Swal.fire("Project created successfully !!!");
+      const res = await updateProject(projectId as string, projectInfo);
+      if (res.modifiedCount > 0) {
+        Swal.fire("Project updated successfully !!!");
         router.push("/projects");
       }
     } catch (err: any) {
@@ -111,81 +96,11 @@ const ProjectManagement = () => {
   };
 
   return (
-    <div className="min-h-screen">
-      <div className="my-12">
-        <h1 className="text-center text-3xl mb-8">All Blogs</h1>
-
-        <div>
-          <div className="overflow-x-auto">
-            <table className="table">
-              {/* head */}
-              <thead>
-                <tr>
-                  <th>SL #</th>
-                  <th>Image</th>
-                  <th>Title</th>
-                  <th>Subtitle</th>
-
-                  <th>View Detail</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {projects.map((project: IFormInput, index: number) => (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>
-                      <div className="flex items-center gap-3">
-                        <div className="avatar">
-                          <div className="mask rounded-lg h-12 w-12">
-                            <Image
-                              src={project.image}
-                              alt="Avatar Tailwind CSS Component"
-                              width={100}
-                              height={100}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td>{project.title}</td>
-                    <td>{project.sub_title}</td>
-
-                    <td>
-                      <Link href={`/projects/${project._id}`}>
-                        <button className="text-center bg-[#e67e22]  px-4 py-2  flex items-center gap-4 rounded-lg text-white w-28">
-                          View Details
-                        </button>
-                      </Link>
-                    </td>
-                    <td>
-                      <div className="join join-vertical">
-                        <Link href={`/dashboard/projects/${project._id}`}>
-                          <button className="btn btn-sm join-item bg-green-700">
-                            Update
-                          </button>
-                        </Link>
-                        <DeleteProjectButton
-                          id={project._id}
-                           onDeleteSuccess={handleDeleteSuccess}
-                        />
-                        {/* <button className="btn btn-sm join-item bg-red-700">
-                          Delete
-                        </button> */}
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
+    <div>
       <div>
         <div className="w-full max-w-xl mx-auto my-12 p-4 bg-slate-300 border border-gray-200  shadow-2xl shadow-slate-600 sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 rounded-xl ">
           <h5 className="text-2xl font-bold text-gray-700 dark:text-white text-center">
-            Create Project
+            Update Project
           </h5>
           <form onSubmit={handleSubmit}>
             <div>
@@ -198,6 +113,7 @@ const ProjectManagement = () => {
 
               <input
                 name="title"
+                defaultValue={project?.title}
                 type="text"
                 id="title"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm block rounded-lg w-full p-2.5 mb-4 "
@@ -217,6 +133,7 @@ const ProjectManagement = () => {
 
               <input
                 name="sub_title"
+                defaultValue={project?.sub_title}
                 type="text"
                 id="sub_title"
                 className="bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm block w-full p-2.5 mb-4 "
@@ -237,6 +154,7 @@ const ProjectManagement = () => {
 
               <input
                 name="image"
+                defaultValue={project?.image}
                 type="text"
                 id="image"
                 className="bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm block w-full p-2.5 mb-4 "
@@ -255,6 +173,7 @@ const ProjectManagement = () => {
 
               <input
                 name="full_image"
+                defaultValue={project?.full_image}
                 type="text"
                 id="full_image"
                 className="bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm block w-full p-2.5 mb-4 "
@@ -273,6 +192,7 @@ const ProjectManagement = () => {
 
               <input
                 name="tech_1"
+                defaultValue={project?.technologies[0]}
                 type="text"
                 id="tech_1"
                 className="bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm block w-full p-2.5 mb-4 "
@@ -291,6 +211,7 @@ const ProjectManagement = () => {
 
               <input
                 name="tech_2"
+                defaultValue={project?.technologies[1]}
                 type="text"
                 id="tech_2"
                 className="bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm block w-full p-2.5 mb-4 "
@@ -309,6 +230,7 @@ const ProjectManagement = () => {
 
               <input
                 name="tech_3"
+                defaultValue={project?.technologies[2]}
                 type="text"
                 id="tech_3"
                 className="bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm block w-full p-2.5 mb-4 "
@@ -326,6 +248,7 @@ const ProjectManagement = () => {
 
               <input
                 name="tech_4"
+                defaultValue={project?.technologies[3]}
                 type="text"
                 id="tech_4"
                 className="bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm block w-full p-2.5 mb-4 "
@@ -343,6 +266,7 @@ const ProjectManagement = () => {
 
               <input
                 name="tech_5"
+                defaultValue={project?.technologies[4]}
                 type="text"
                 id="tech_5"
                 className="bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm block w-full p-2.5 mb-4 "
@@ -363,6 +287,7 @@ const ProjectManagement = () => {
 
               <input
                 name="features_1"
+                defaultValue={project?.features[0]}
                 type="text"
                 id="features_1"
                 className="bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm block w-full p-2.5 mb-4 "
@@ -380,6 +305,7 @@ const ProjectManagement = () => {
 
               <input
                 name="features_2"
+                defaultValue={project?.features[1]}
                 type="text"
                 id="features_2"
                 className="bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm block w-full p-2.5 mb-4 "
@@ -397,6 +323,7 @@ const ProjectManagement = () => {
 
               <input
                 name="features_3"
+                defaultValue={project?.features[2]}
                 type="text"
                 id="features_3"
                 className="bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm block w-full p-2.5 mb-4 "
@@ -414,6 +341,7 @@ const ProjectManagement = () => {
 
               <input
                 name="features_4"
+                defaultValue={project?.features[3]}
                 type="text"
                 id="features_4"
                 className="bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm block w-full p-2.5 mb-4 "
@@ -431,6 +359,7 @@ const ProjectManagement = () => {
 
               <input
                 name="features_5"
+                defaultValue={project?.features[4]}
                 type="text"
                 id="features_5"
                 className="bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm block w-full p-2.5 mb-4 "
@@ -451,6 +380,7 @@ const ProjectManagement = () => {
 
               <input
                 name="live_link"
+                defaultValue={project?.live_link}
                 type="text"
                 id="live_link"
                 className="bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-sm block w-full p-2.5 mb-4 "
@@ -469,4 +399,4 @@ const ProjectManagement = () => {
   );
 };
 
-export default ProjectManagement;
+export default UpdateProject;

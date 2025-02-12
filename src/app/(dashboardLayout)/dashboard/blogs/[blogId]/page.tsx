@@ -1,7 +1,7 @@
 "use client";
 
 import { fetchBlog, updateBlog } from "@/utils/actions/updateBlog";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 import { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -31,6 +31,7 @@ interface IBlog {
 
 const UpdateBlog = () => {
   const { blogId } = useParams();
+  const router= useRouter()
 
   const [blog, setBlog] = useState<IBlog | null>(null);
   const { register, handleSubmit, reset } = useForm<IFormInput>({
@@ -72,6 +73,7 @@ const UpdateBlog = () => {
     const res = await updateBlog(blogId as string, updatedData);
     if (res.modifiedCount > 0) {
       Swal.fire("Blog updated successfully !!!");
+      router.push('/blogs')
     }
   };
 
