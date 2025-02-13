@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Project name: Monirul Hassan
 
-## Getting Started
+## Live server link: https://my-portfolio-forntend.vercel.app/
 
-First, run the development server:
+## Technology used:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js
+- Express.js
+- Mongodb
+- TypeScript - installed as dev dependency
+- tailwindcss - installed as dev dependency
+- daisyUi - installed as dev dependency
+- Framer Motion
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+In addition to those I installed -
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- eslint - to check and fix code errors.
+- prettier - to format code to have better look.
+- ts-node-dev - to run the server every time the code is updated
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## The project has a database named portfolio and collections - blogs, messages and projects
 
-## Learn More
+## How it works:
 
-To learn more about Next.js, take a look at the following resources:
+The project has frontend and backend
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Any one can visit the website and go through the projects and blogs and check detail page.
+2. Only logged user can go to dashboard pages.
+3. Login can be done with google and github account.
+4. After login user will be diverted to dashboard and he/she can see her profile. he/she can create, view, edit and delete blog and projects.
+5. Logged in user can view all the messages received through contact form.

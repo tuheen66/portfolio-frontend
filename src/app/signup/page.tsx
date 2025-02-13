@@ -7,7 +7,7 @@ import login from "../../assets/images/signup.png";
 
 const SignUpPage = () => {
     return (
-        <div className="flex w-[90%] mx-auto items-center min-h-screen justify-center gap-12 ">
+        <div className="flex flex-col-reverse lg:flex-row w-[90%] mx-auto items-center min-h-screen justify-center gap-12 ">
       
       <div className=" lg:w-[30%] bg-white p-6  text-gray-700 my-8 rounded-lg">
         <h2 className="text-center text-3xl font-bold">Please Signup</h2>

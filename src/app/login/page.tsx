@@ -9,7 +9,7 @@ import { signIn } from "next-auth/react";
 
 const LoginPage = () => {
   return (
-    <div className="flex w-[90%] mx-auto items-center min-h-screen justify-center gap-12 ">
+    <div className="flex flex-col lg:flex-row w-[90%] mx-auto items-center min-h-screen justify-center gap-12 ">
       <div>
         <Image
           src={login}
@@ -65,7 +65,7 @@ const LoginPage = () => {
             <button
               onClick={() =>
                 signIn("google", {
-                  callbackUrl: "http://localhost:3000/dashboard",
+                  callbackUrl: "https://my-portfolio-forntend.vercel.app/dashboard",
                 })
               }
               className=" text-2xl font-bold mx-2 cursor-pointer hover:underline"
@@ -76,7 +76,7 @@ const LoginPage = () => {
             <button
               onClick={() =>
                 signIn("github", {
-                  callbackUrl: "http://localhost:3000/dashboard",
+                  callbackUrl: "https://my-portfolio-forntend.vercel.app/dashboard",
                 })
               }
               className="text-2xl font-bold mx-2 cursor-pointer hover:underline"
