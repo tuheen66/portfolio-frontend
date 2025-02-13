@@ -1,11 +1,19 @@
+'use client'
+
 import Image from "next/image";
+
 
 import Link from "next/link";
 import { TBlog } from "./DetailBlog";
 
+
+
 const BlogCard = ({ blog }: { blog: TBlog }) => {
   return (
-    <div className="flex flex-col lg:flex-row gap-12 border-2 bg-slate-300 dark:bg-slate-900 dark:text-white text-slate-900 border-gray-300 rounded-lg p-5 shadow-lg shadow-gray-500">
+    <div
+      
+      className="flex flex-col lg:flex-row gap-12 border-2 bg-slate-300 dark:bg-slate-900 dark:text-white text-slate-900 border-gray-300 rounded-lg p-5 shadow-lg shadow-gray-500"
+    >
       <div className="mb-4 mx-auto">
         <Image
           className="rounded-lg"

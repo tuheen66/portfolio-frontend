@@ -1,20 +1,30 @@
-"use client";
-
-import { useRouter } from "next/navigation";
-
-const DeleteMessageButton = ({ id }: { id: string }) => {
-  const router = useRouter();
-
+const DeleteMessageButton = ({
+  id,
+  onDeleteSuccess,
+}: {
+  id: string;
+  onDeleteSuccess: (id: string) => void;
+}) => {
   const handleDelete = async () => {
-    const backendUrl=process.env.NEXT_PUBLIC_BACKEND_URL || "https://fallback-url.com"
-   
-    await fetch(`${backendUrl}/message/${id}`, {
+    const backendUrl =
+      process.env.NEXT_PUBLIC_BACKEND_URL || "https://fallback-url.com";
+
+    const res = await fetch(`${backendUrl}/message/${id}`, {
       method: "DELETE",
     });
-    router.refresh();
+    if (res.ok) {
+      onDeleteSuccess(id);
+    }
   };
 
-  return <button className="btn btn-sm join-item text-white border-none bg-red-700" onClick={handleDelete}>Delete</button>;
+  return (
+    <button
+      className="btn btn-sm join-item bg-red-700 border-none text-white"
+      onClick={handleDelete}
+    >
+      Delete
+    </button>
+  );
 };
 
-export default DeleteMessageButton ;
+export default DeleteMessageButton;

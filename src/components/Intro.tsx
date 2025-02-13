@@ -1,18 +1,32 @@
 import Image from "next/image";
 import monir from "../assets/images/Monirul.jpg";
 import Link from "next/link";
+import * as motion from "motion/react-client"
 
 const Intro = () => {
+  const ball = {
+    width: 320,
+    height: 320,
+    borderRadius: "50%",
+    background: "var(--accent)",
+}
   return (
     <section className="flex flex-col lg:flex-row items-center justify-center gap-6 p-6 bg-gray-100 dark:bg-gray-700 rounded-2xl shadow-lg">
       {/* Profile Picture */}
-      <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-blue-500 shadow-lg">
+      <motion.div style={ball}
+            initial={{ opacity: 0, scale: .5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+                duration: 0.8,
+                delay: 0.5,
+                ease: [0, 0.71, 0.2, 1.01],
+            }} className="w-80 h-80 rounded-full overflow-hidden border-4 border-blue-500 shadow-lg lg:mr-12">
         <Image
           src={monir}
           alt="Monirul Hassan"
           className="w-full h-full object-cover"
         />
-      </div>
+      </motion.div>
 
       {/* Text Section */}
       <div className=" max-w-xl">
